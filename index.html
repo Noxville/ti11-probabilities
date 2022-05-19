@@ -252,6 +252,10 @@
                 region_data[r] = Array(num_preds).fill(0);
             });
 
+            qualifying_points['min'] = Array(num_preds).fill(0);
+            qualifying_points['max'] = Array(num_preds).fill(0);
+            qualifying_points['avg'] = Array(num_preds).fill(0);
+
             _idx['teams'].forEach(function (t) {
                 let team_name = t['name'];
                 team_map[team_name] = t;
@@ -265,9 +269,9 @@
             _idx['predictions'].forEach(function (prediction_file, i) {
                 $.getJSON("data/" + prediction_file + "?t=" + Date.now(), function (prediction) {
                     // track the threshold points
-                    qualifying_points['min'].push(prediction['min_threshold']);
-                    qualifying_points['max'].push(prediction['max_threshold']);
-                    qualifying_points['avg'].push(prediction['avg_threshold']);
+                    qualifying_points['min'][i] = prediction['min_threshold'];
+                    qualifying_points['max'][i] = prediction['max_threshold'];
+                    qualifying_points['avg'][i] = prediction['avg_threshold'];
 
                     // team_map[p['team_outcomes']['1st']
                     Object.keys(prediction['team_outcomes']).forEach(function (tn) {
@@ -500,19 +504,19 @@
                         pointStart: 1
                     }
                 },
-                // tooltip: {
-                //     shared: true,
-                //     formatter: function () {
-                //         let points = this.points;
-                //         points.sort((i, j) => (i.y > j.y ? 1 : -1)).reverse();
-                //         let html = points.length ? '<span style="font-size: 10px">' + points[0].key + '</span><br/>' : '';
-                //
-                //         for (let index = 0; index < points.length; index++) {
-                //             html += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b>' + (points[index].y).toFixed(2) + ' %</b><br/>';
-                //         }
-                //         return html;
-                //     }
-                // },
+                tooltip: {
+                    shared: true,
+                    formatter: function () {
+                        let points = this.points;
+                        points.sort((i, j) => (i.y > j.y ? 1 : -1)).reverse();
+                        let html = points.length ? '<span style="font-size: 10px">' + points[0].key + '</span><br/>' : '';
+
+                        for (let index = 0; index < points.length; index++) {
+                            html += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b>' + (points[index].y).toFixed(2) + '</b><br/>';
+                        }
+                        return html;
+                    }
+                },
                 series: processed_qualifying_points,
 
                 responsive: {
