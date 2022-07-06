@@ -276,19 +276,21 @@
                     // team_map[p['team_outcomes']['1st']
                     Object.keys(prediction['team_outcomes']).forEach(function (tn) {
 
-                        // update the chance to win plots, the region winner plots, and the $ plots.
-                        let chance_to_win = (prediction['team_outcomes'][tn]['1st'] / prediction['iterations']);
-                        let region_of_winner = team_region[tn];
+                        if (tn in team_map) {  // only teams valid at the end are what we care about
+                            // update the chance to win plots, the region winner plots, and the $ plots.
+                            let chance_to_win = (prediction['team_outcomes'][tn]['1st'] / prediction['iterations']);
+                            let region_of_winner = team_region[tn];
 
-                        region_data[region_of_winner][i] += chance_to_win;
-                        team_map[tn].to_win[i] = chance_to_win;
+                            region_data[region_of_winner][i] += chance_to_win;
+                            team_map[tn].to_win[i] = chance_to_win;
 
-                        let dollars = 0.0;
-                        for (const [place, percent] of Object.entries(prize_percent)) {
-                            let probability = prediction['team_outcomes'][tn][place] / prediction['iterations'];
-                            dollars += (prize_pool * percent * probability)
+                            let dollars = 0.0;
+                            for (const [place, percent] of Object.entries(prize_percent)) {
+                                let probability = prediction['team_outcomes'][tn][place] / prediction['iterations'];
+                                dollars += (prize_pool * percent * probability)
+                            }
+                            team_map[tn]['expected_earnings'][i] = dollars | 0;
                         }
-                        team_map[tn]['expected_earnings'][i] = dollars | 0;
                     });
 
                     // last prediction generates table data
@@ -306,9 +308,11 @@
 
                             let ee = 0.0;
                             Object.keys(prize_percent).forEach(function (place) {
-                                let odd = (prediction['team_outcomes'][t.name][place] / prediction['iterations'])
-                                blob["_" + place] = odd;
-                                ee += prize_pool * odd * prize_percent[place];
+                                if (t.name in prediction['team_outcomes']) {
+                                    let odd = (prediction['team_outcomes'][t.name][place] / prediction['iterations'])
+                                    blob["_" + place] = odd;
+                                    ee += prize_pool * odd * prize_percent[place];
+                                }
                             })
                             blob["_qualify_somehow"] = blob['_points_qual'] + blob['_reg_qual'] + blob['_wc_qual'];
                             blob.expected_earnings = ee;
