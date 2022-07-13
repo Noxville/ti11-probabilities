@@ -15,7 +15,7 @@ if __name__ == "__main__":
                 val = qual_shifts.get(team, 0)
                 qual_shifts[team] = val + sign * (outcomes['points_qual'] / its)
 
-    print("Shifts in direct (points) qualification chances")
+    print("Shifts in direct (points) qual. %")
     for team, shift in sorted(qual_shifts.items(), key=lambda x: abs(x[1]), reverse=True):
         print(f"{team}: {int(shift * 10000)/100}%")
 
