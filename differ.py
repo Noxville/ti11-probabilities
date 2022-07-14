@@ -23,4 +23,4 @@ if __name__ == "__main__":
 
     print("Shifts in direct (points) qual. %")
     for team, shift in sorted(qual_shifts.items(), key=lambda x: abs(x[1][1]-x[1][0]), reverse=True):
-        print(f"{team}: {fmt(shift[1] - shift[0])}% ({fmt(shift[0])}% -> {fmt(shift[1])})% ")
+        print(f"{team}: {fmt(shift[1] - shift[0])}% ({fmt(shift[0])}% -> {fmt(shift[1])}%) ")
