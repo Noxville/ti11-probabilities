@@ -5,11 +5,15 @@ def fmt(i):
     return int(i * 10000) / 100
 
 
+DIFF_DISTANCE = 1
+
+
 if __name__ == "__main__":
     with open('./data/index.json') as f_index:
         idx = json.load(f_index)
         preds = idx['predictions']
-        diff_comp = preds[-2:]
+        diff_comp = [preds[-1 - DIFF_DISTANCE], preds[-1]]
+        print(f"Comparing {','.join(diff_comp)}")
 
     teams = set()  # make sure there's no new sudden teams (or missing teams)
     qual_shifts = {}
