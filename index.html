@@ -72,10 +72,10 @@
                         data-cell-style="gradientStyler2"
                         data-sortable="true">Qualify <br> Somehow
                     </th>
-                    <th data-field="_points_qual" data-formatter="percentFormatter" data-cell-style="gradientStyler2"
+                    <th data-field="_points_qual" data-formatter="percentFormatter" data-cell-style="gradientStyler512"
                         data-sortable="true">Qualify via<br> Points
                     </th>
-                    <th data-field="_reg_qual" data-formatter="percentFormatter" data-cell-style="gradientStyler2"
+                    <th data-field="_reg_qual" data-formatter="percentFormatter" data-cell-style="gradientStyler128"
                         data-sortable="true">Qualify via<br> Regionals
                     </th>
                     <th data-field="_wc_qual" data-formatter="percentFormatter" data-cell-style="gradientStyler2"
@@ -188,15 +188,43 @@
     }
 
     function gradientStyler1(value, row, index) {
-        return gradientStyler(value, row, index, 0.125);
+        return gradientStyler(value, row, index, 0.09);
     }
 
     function gradientStyler2(value, row, index) {
-        return gradientStyler(value, row, index, 0.25);
+        return gradientStyler(value, row, index, 0.18);
     }
 
     function gradientStyler4(value, row, index) {
-        return gradientStyler(value, row, index, 0.40);
+        return gradientStyler(value, row, index, 0.27);
+    }
+
+    function gradientStyler8(value, row, index) {
+        return gradientStyler(value, row, index, 0.36);
+    }
+
+    function gradientStyler16(value, row, index) {
+        return gradientStyler(value, row, index, 0.45);
+    }
+
+    function gradientStyler32(value, row, index) {
+        return gradientStyler(value, row, index, 0.54);
+    }
+
+    function gradientStyler64(value, row, index) {
+        return gradientStyler(value, row, index, 0.63);
+    }
+
+    function gradientStyler128(value, row, index) {
+        return gradientStyler(value, row, index, 0.72);
+    }
+
+    function gradientStyler256(value, row, index) {
+        return gradientStyler(value, row, index, 0.81);
+    }
+
+    function gradientStyler512(value, row, index) {
+        return gradientStyler(value, row, index, 0.90);
     }
 
     function gradientStyler(value, row, index, upper) {
@@ -357,6 +385,12 @@
                     togo -= 1;
                     // once we've got all the prediction data, let's render it
                     if (togo === 0) {
+                        // we only want teams with > $1 EV to be shown
+                        const team_kvs = Object.entries(team_map);
+                        const filtered_kvs = team_kvs.filter(([key, value]) => value.expected_earnings[value.expected_earnings.length - 1] > 1);
+                        team_map = Object.fromEntries(filtered_kvs);
+                        table_data = table_data.filter(t => t.expected_earnings > 1)
+
                         set_updated_at(updated_at);
                         set_comment_of(comment_of);
                         render_towin_graph(team_map);
