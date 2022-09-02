@@ -29,7 +29,7 @@
                    class="table table-dark table-sm text-center"
                    data-toggle="table"
                    data-sortable="true"
-                   data-sort-name="expected_earnings"
+                   data-sort-name="_qualify_somehow"
                    data-sort-order="desc"
                    data-search="true"
                    style="width: 99%;"
@@ -38,6 +38,7 @@
                 <tr>
                     <th data-field="team" data-formatter="teamFormatter">Logo</th>
                     <th data-field="team" data-formatter="teamNameFormatter" data-sortable="true">Name</th>
+                    <th data-field="region" data-sortable="true">Region</th>
                     <th data-field="_1st" data-formatter="percentFormatter" data-cell-style="gradientStyler1"
                         data-sortable="true">1st
                     </th>
@@ -330,7 +331,7 @@
 
                         _idx['teams'].forEach(function (t) {
                             let blob = {};
-                            ['name', 'tag', 'datdota_id', 'logo_id'].forEach(function (field) {
+                            ['name', 'tag', 'datdota_id', 'logo_id', 'region'].forEach(function (field) {
                                 blob[field] = t[field];
                             });
 
@@ -356,6 +357,7 @@
 
                                 gr_a.push({
                                     'name': team_map[tn].name,
+                                    'region': team_map[tn].region,
                                     'tag': team_map[tn].tag,
                                     'datdota_id': team_map[tn].datdota_id,
                                     'logo_id': team_map[tn].logo_id,
@@ -371,6 +373,7 @@
 
                                 gr_b.push({
                                     'name': team_map[tn].name,
+                                    'region': team_map[tn].region,
                                     'tag': team_map[tn].tag,
                                     'datdota_id': team_map[tn].datdota_id,
                                     'logo_id': team_map[tn].logo_id,
