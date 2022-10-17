@@ -36,8 +36,8 @@
             >
                 <thead>
                 <tr>
-                    <th data-field="team" data-formatter="teamFormatter">Logo</th>
-                    <th data-field="team" data-formatter="teamNameFormatter" data-sortable="true">Name</th>
+                    <th data-field="logo" data-formatter="teamFormatter">Logo</th>
+                    <th data-field="team" data-formatter="teamNameFormatter" data-sortable="true" data-sorter="nameSorter">Name</th>
                     <th data-field="region" data-sortable="true">Region</th>
                     <th data-field="_1st" data-formatter="percentFormatter" data-cell-style="gradientStyler1"
                         data-sortable="true">1st
@@ -106,8 +106,8 @@
                 >
                     <thead>
                     <tr>
-                        <th data-field="team" data-formatter="teamFormatter">Logo</th>
-                        <th data-field="team" data-formatter="teamNameFormatter" data-sortable="true">Name</th>
+                        <th data-field="logo" data-formatter="teamFormatter">Logo</th>
+                        <th data-field="team" data-formatter="teamNameFormatter" data-sorter="nameSorter" data-sortable="true">Name</th>
                         <th data-field="_wb" data-formatter="percentFormatter" data-cell-style="gradientStyler4"
                             data-sortable="true">Goes to UB
                         </th>
@@ -132,8 +132,8 @@
                 >
                     <thead>
                     <tr>
-                        <th data-field="team" data-formatter="teamFormatter">Logo</th>
-                        <th data-field="team" data-formatter="teamNameFormatter" data-sortable="true">Name</th>
+                        <th data-field="logo" data-formatter="teamFormatter">Logo</th>
+                        <th data-field="team" data-formatter="teamNameFormatter" data-sorter="nameSorter" data-sortable="true">Name</th>
                         <th data-field="_wb" data-formatter="percentFormatter" data-cell-style="gradientStyler4"
                             data-sortable="true">Goes to UB
                         </th>
@@ -165,6 +165,10 @@
 
 
 <script>
+    function nameSorter(a, b, c, d, e) {
+        if (c.name === d.name) return 0;
+        return (d.name.toLowerCase() > c.name.toLowerCase()) ? 1 : -1;
+    }
 
     function teamFormatter(value, row) {
         let logo = "https://cdn.datdota.com/images/" + row.logo_id + ".png";
