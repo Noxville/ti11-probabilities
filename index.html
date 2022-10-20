@@ -94,60 +94,60 @@
     <br>
     <br>
     <!--   groups   -->
-         <div class="row" id="groups">
-            <div class="col-6 table-responsive">
-                <span class="row justify-content-center"><h2>Group A</h2></span>
-                <table id="group-a"
-                       class="table table-dark table-sm text-center"
-                       data-toggle="table"
-                       data-sortable="true"
-                       data-sort-name="_wb"
-                       data-sort-order="desc"
-                >
-                    <thead>
-                    <tr>
-                        <th data-field="logo" data-formatter="teamFormatter">Logo</th>
-                        <th data-field="team" data-formatter="teamNameFormatter" data-sorter="nameSorter" data-sortable="true">Name</th>
-                        <th data-field="_wb" data-formatter="percentFormatter" data-cell-style="gradientStyler4"
-                            data-sortable="true">Goes to UB
-                        </th>
-                        <th data-field="_lb" data-formatter="percentFormatter" data-cell-style="gradientStyler4"
-                            data-sortable="true">Goes to LB
-                        </th>
-                        <th data-field="_elim" data-formatter="percentFormatter" data-cell-style="gradientStyler4"
-                            data-sortable="true">Eliminated
-                        </th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="col-6 table-responsive">
-                <span class="row justify-content-center"><h2>Group B</h2></span>
-                <table id="group-b"
-                       class="table table-dark table-sm text-center"
-                       data-toggle="table"
-                       data-sortable="true"
-                       data-sort-name="_wb"
-                       data-sort-order="desc"
-                >
-                    <thead>
-                    <tr>
-                        <th data-field="logo" data-formatter="teamFormatter">Logo</th>
-                        <th data-field="team" data-formatter="teamNameFormatter" data-sorter="nameSorter" data-sortable="true">Name</th>
-                        <th data-field="_wb" data-formatter="percentFormatter" data-cell-style="gradientStyler4"
-                            data-sortable="true">Goes to UB
-                        </th>
-                        <th data-field="_lb" data-formatter="percentFormatter" data-cell-style="gradientStyler4"
-                            data-sortable="true">Goes to LB
-                        </th>
-                        <th data-field="_elim" data-formatter="percentFormatter" data-cell-style="gradientStyler4"
-                            data-sortable="true">Eliminated
-                        </th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
+<!--         <div class="row" id="groups">-->
+<!--            <div class="col-6 table-responsive">-->
+<!--                <span class="row justify-content-center"><h2>Group A</h2></span>-->
+<!--                <table id="group-a"-->
+<!--                       class="table table-dark table-sm text-center"-->
+<!--                       data-toggle="table"-->
+<!--                       data-sortable="true"-->
+<!--                       data-sort-name="_wb"-->
+<!--                       data-sort-order="desc"-->
+<!--                >-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th data-field="logo" data-formatter="teamFormatter">Logo</th>-->
+<!--                        <th data-field="team" data-formatter="teamNameFormatter" data-sorter="nameSorter" data-sortable="true">Name</th>-->
+<!--                        <th data-field="_wb" data-formatter="percentFormatter" data-cell-style="gradientStyler4"-->
+<!--                            data-sortable="true">Goes to UB-->
+<!--                        </th>-->
+<!--                        <th data-field="_lb" data-formatter="percentFormatter" data-cell-style="gradientStyler4"-->
+<!--                            data-sortable="true">Goes to LB-->
+<!--                        </th>-->
+<!--                        <th data-field="_elim" data-formatter="percentFormatter" data-cell-style="gradientStyler4"-->
+<!--                            data-sortable="true">Eliminated-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--            <div class="col-6 table-responsive">-->
+<!--                <span class="row justify-content-center"><h2>Group B</h2></span>-->
+<!--                <table id="group-b"-->
+<!--                       class="table table-dark table-sm text-center"-->
+<!--                       data-toggle="table"-->
+<!--                       data-sortable="true"-->
+<!--                       data-sort-name="_wb"-->
+<!--                       data-sort-order="desc"-->
+<!--                >-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th data-field="logo" data-formatter="teamFormatter">Logo</th>-->
+<!--                        <th data-field="team" data-formatter="teamNameFormatter" data-sorter="nameSorter" data-sortable="true">Name</th>-->
+<!--                        <th data-field="_wb" data-formatter="percentFormatter" data-cell-style="gradientStyler4"-->
+<!--                            data-sortable="true">Goes to UB-->
+<!--                        </th>-->
+<!--                        <th data-field="_lb" data-formatter="percentFormatter" data-cell-style="gradientStyler4"-->
+<!--                            data-sortable="true">Goes to LB-->
+<!--                        </th>-->
+<!--                        <th data-field="_elim" data-formatter="percentFormatter" data-cell-style="gradientStyler4"-->
+<!--                            data-sortable="true">Eliminated-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                </table>-->
+<!--            </div>-->
+<!--        </div>-->
     <!--   groups end   -->
     <div class="row" style="display: none; ">
         <div id="qual_points" style="width: 100%; height: 500px; margin-top: 2.5em"></div>
@@ -249,7 +249,7 @@
 
         const prize_pool = 15_333_100;
         const prize_percent = {
-            '1st': 0.455,
+            '1st': 0.45,
             '2nd': 0.13,
             '3rd': 0.09,
             '4th': 0.06,
@@ -258,7 +258,7 @@
             '9-12th': 0.02,
             '13-16th': 0.015,
             '17-18th': 0.0025,
-            '19-20th': 0.000,
+            '19-20th': 0.0025,
             'elim_wc': 0.00,
             'points_qual': 0.00,
             'reg_qual': 0.00,
